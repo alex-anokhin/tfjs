@@ -128,7 +128,7 @@ function getModel() {
 	});
   }
 
-  const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
 
 function doPrediction(model, data, testDataSize = 500) {
   const IMAGE_WIDTH = 28;
@@ -161,19 +161,6 @@ async function showConfusion(model, data) {
   labels.dispose();
 }
 
-//async function run() {
-//	const data = new MnistData();
-//	await data.load();
-//	await showExamples(data);
-//	const model = getModel();
-//	tfvis.show.modelSummary({name: 'Model Architecture', tab: 'Model'}, model);
-//	await train(model, data);
-//	await showAccuracy(model, data);
-//	await showConfusion(model, data);
-//  }
-
-//  document.addEventListener('DOMContentLoaded', run);
-
 function updateSliderValue(event) {
     const sliderId = event.target.id;
     const sliderValue = event.target.value;
@@ -186,17 +173,8 @@ async function run() {
     await data.load();
     await showExamples(data);
 
-    // Обработчики для кнопок
     const trainButton = document.getElementById('train-btn');
-    //const predictButton = document.getElementById('predict-btn');
-
     trainButton.addEventListener('click', () => startTraining(data));
-    //predictButton.addEventListener('click', () => startPrediction(data));
-
-	//trainButton.addEventListener('click', async () => {
-	//	const model = await startTraining(data);
-	//	await predict(model);
-	//});
 
 	document.getElementById('batch-size-slider').addEventListener('input', updateSliderValue);
 	document.getElementById('train-data-size-slider').addEventListener('input', updateSliderValue);
@@ -217,12 +195,6 @@ async function startTraining(data) {
     await showConfusion(model, data);
 	return model;
 	}
-
-//async function startPrediction(data) {
-//    const model = getModel();
-//    await showAccuracy(model, data);
-//    await showConfusion(model, data);
-//}
 
 let predictData;
 
@@ -281,7 +253,3 @@ function showImage(testDataSize, testXs, actualLabel, predictedLabel) {
 }
 document.getElementById('predict-btn').addEventListener('click', predict);
 
-//document.getElementById('predict-btn').addEventListener('click', async () => {
-//    const model = await startTraining(data);
-//    await predict(model);
-//});
